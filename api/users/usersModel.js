@@ -14,8 +14,12 @@ function addUser(user){
     })
 }
 
-function getUsers(){
-  return db('users').select('*');
+function getUsers(department){
+  if(!department){
+    return db('users').select('*');
+  } else {
+    return db('users').where({department})
+  }
 }
 
 function findUser(username){
